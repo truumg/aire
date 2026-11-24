@@ -29,7 +29,7 @@
         dark ? "Включить светлую тему" : "Включить тёмную тему"
       );
     }
-    if (themeMeta) themeMeta.setAttribute("content", dark ? "#0f0e0d" : "#f3efe8");
+    if (themeMeta) themeMeta.setAttribute("content", dark ? "#070d18" : "#eef2f7");
   };
 
   syncTheme();
@@ -157,27 +157,6 @@
       { threshold: 0.6 }
     );
     counters.forEach((el) => counterObserver.observe(el));
-  }
-
-  /* ---------- Наклон 3D-плана ---------- */
-
-  const stage = $("#planStage");
-  const planImg = stage ? stage.querySelector("img") : null;
-  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-  if (stage && planImg && finePointer && !reduced) {
-    stage.addEventListener("pointermove", (event) => {
-      const rect = stage.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-      const rx = (-y * 7).toFixed(2);
-      const ry = (x * 9).toFixed(2);
-      planImg.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(1.015)`;
-    });
-
-    stage.addEventListener("pointerleave", () => {
-      planImg.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-    });
   }
 
   /* ---------- Выбор квартиры → форма ---------- */

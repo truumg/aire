@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AIRE — жилой дом в Хамовниках</title>
   <meta name="description" content="AIRE — 48 квартир с панорамными окнами, террасой на крыше и двором без машин. Москва, Хамовники. Сдача — 2027.">
-  <meta name="theme-color" content="#f3efe8">
+  <meta name="theme-color" content="#070d18">
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23141210'/%3E%3Cpath d='M18 46 32 16l14 30M23 36h18' fill='none' stroke='%23f3efe8' stroke-width='2.6'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230b1526'/%3E%3Cpath d='M18 46 32 16l14 30M23 36h18' fill='none' stroke='%23e9eef7' stroke-width='2.6'/%3E%3C/svg%3E">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="AIRE — жилой дом в Хамовниках">
@@ -38,7 +38,7 @@
       <nav class="nav" id="nav" aria-label="Основная навигация">
         <a href="#about">Дом</a>
         <a href="#apartments">Квартиры</a>
-        <a href="#plan">3D-план</a>
+        <a href="#plan">3D-модель</a>
         <a href="#gallery">Галерея</a>
         <a href="#location">Локация</a>
         <a href="#contacts">Контакты</a>
@@ -71,7 +71,7 @@
             </p>
             <div class="hero__cta">
               <a class="btn" href="#apartments">Выбрать квартиру</a>
-              <a class="link-arrow" href="#plan">Смотреть 3D-план <span aria-hidden="true">↗</span></a>
+              <a class="link-arrow" href="#plan">Смотреть 3D-модель <span aria-hidden="true">↗</span></a>
             </div>
           </div>
         </div>
@@ -274,19 +274,36 @@
       </div>
     </section>
 
-    <!-- 3D-ПЛАН -->
+    <!-- 3D-МОДЕЛЬ -->
     <section class="section section--plan" id="plan">
       <div class="wrap">
         <div class="sec-head" data-reveal>
           <span class="sec-head__num">03</span>
-          <h2 class="sec-head__title">3D-план</h2>
-          <span class="sec-head__meta">Трёхкомнатная · 92 м²</span>
+          <h2 class="sec-head__title">3D-модель</h2>
+          <span class="sec-head__meta">Интерактивная модель · 92 м²</span>
         </div>
 
         <div class="plan">
-          <div class="plan__stage" id="planStage" data-reveal>
-            <img src="img/plan3d.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Трёхмерный разрез трёхкомнатной квартиры: кухня-гостиная, три спальни, санузел и гардеробная">
-            <span class="plan__hint">Двигайте мышью — план наклонится</span>
+          <div class="plan__viewer" data-reveal>
+            <div class="plan__stage" id="planStage">
+              <div class="plan__canvas" id="planCanvas" role="img" aria-label="Интерактивная 3D-модель квартиры 92 м²: кухня-гостиная, три спальни, санузел, гардеробная и терраса"></div>
+              <img class="plan__fallback" src="img/plan3d.jpg" width="1600" height="1200" alt="Трёхмерный разрез трёхкомнатной квартиры: кухня-гостиная, три спальни, санузел и гардеробная">
+              <div class="plan__loading" aria-hidden="true"><span></span>Собираем 3D-модель</div>
+              <span class="plan__badge">3D · 92 м²</span>
+              <div class="plan__tools">
+                <button class="plan__tool" id="planReset" type="button" aria-label="Вернуть общий вид" title="Общий вид">↺</button>
+                <button class="plan__tool plan__tool--text" id="planAuto" type="button" aria-pressed="false" title="Автоповорот">Авто</button>
+                <button class="plan__tool" id="planFull" type="button" aria-label="Открыть на весь экран" title="На весь экран">⤢</button>
+              </div>
+              <p class="plan__hint">Вращайте · приближайте · выбирайте ракурс</p>
+            </div>
+            <div class="plan__chips" role="group" aria-label="Ракурсы 3D-модели">
+              <button class="plan__chip is-active" type="button" data-view="overview">Общий вид</button>
+              <button class="plan__chip" type="button" data-view="living">Кухня-гостиная</button>
+              <button class="plan__chip" type="button" data-view="bedrooms">Спальни</button>
+              <button class="plan__chip" type="button" data-view="bath">Санузел</button>
+              <button class="plan__chip" type="button" data-view="terrace">Терраса</button>
+            </div>
           </div>
 
           <div class="plan__side" data-reveal data-delay="80">
@@ -300,6 +317,7 @@
               <li><span>Прихожая</span><span>4 м²</span></li>
               <li><span>Гардеробная</span><span>3 м²</span></li>
             </ul>
+            <p class="plan__note">Модель собрана по планировке трёхкомнатной квартиры. Мебель и отделка — демонстрационные.</p>
             <a class="btn btn--ghost" href="#booking" data-type="3 спальни">Забронировать этот план</a>
           </div>
         </div>
@@ -557,7 +575,7 @@
         <nav class="footer__nav" aria-label="Навигация в подвале">
           <a href="#about">О доме</a>
           <a href="#apartments">Квартиры</a>
-          <a href="#plan">3D-план</a>
+          <a href="#plan">3D-модель</a>
           <a href="#gallery">Галерея</a>
           <a href="#location">Локация</a>
           <a href="#contacts">Контакты</a>
@@ -574,11 +592,15 @@
   <div class="lightbox" id="lightbox" hidden>
     <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Закрыть">×</button>
     <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" type="button" aria-label="Предыдущее фото">←</button>
-    <img id="lightboxImg" src="" alt="">
+    <img id="lightboxImg" src="img/living.jpg" alt="">
     <p class="lightbox__cap" id="lightboxCap"></p>
     <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" type="button" aria-label="Следующее фото">→</button>
   </div>
 
   <script src="script.js"></script>
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three.module.min.js" } }
+  </script>
+  <script type="module" src="script3d.js"></script>
 </body>
 </html>
