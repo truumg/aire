@@ -690,7 +690,6 @@ function init() {
 
   renderer.render(scene, camera);
   stage.classList.remove("is-loading");
-  stage.classList.add("is-3d");
 
   function tick(now) {
     requestAnimationFrame(tick);
